@@ -1,0 +1,16 @@
+// Here you can add other styles
+.dataTables_empty {
+    display: none;
+  }
+
+.formatted-text {
+    white-space: pre-wrap;
+  }
+
+  .bshadow {
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+    opacity: .5;
+  
+  }

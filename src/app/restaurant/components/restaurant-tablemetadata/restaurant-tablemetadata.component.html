@@ -1,0 +1,60 @@
+<div style="display: flex;flex-wrap: wrap;"></div>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header" style="text-align:center">
+            <strong>Table Management</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Restaurant Name</strong>
+                    <div>{{currentRestaurant.name}}</div>
+                </div>
+                <div class="col-md-6">
+                    <strong>Restaurant Address</strong>
+                    <div class="formatted-text">{{currentRestaurant.address}}</div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Table Details</strong>
+                        </div>
+                        <div class="card-body">
+                            <form [formGroup]="table" (ngSubmit)="submit()">
+                                <div formArrayName="items"
+                                    *ngFor="let item of table.controls['items'].controls; let i = index">
+                                    <div class="" [formGroupName]="i">
+                                        {{i + 1}}
+                                        <input formControlName='name' placeholder="Table Name">
+                                        <input formControlName='capacity' placeholder="Capacity">
+                                        <button type="button" (click)="removeItemtable(i)"><i style="color:red"
+                                                class="fa fa-minus-square ">
+                                            </i></button>
+
+
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <button type="button" (click)="addNexttable()"><i style="color:green"
+                                        class="fa fa-plus-square ">
+                                    </i></button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-info btn-sm" (click)="saveTable()" type="button">Save Table Info</button>
+            <button class="btn btn-info btn-sm" (click)="cancel()" type="button">Cancel</button>
+        </div>
+    </div>
+</div>

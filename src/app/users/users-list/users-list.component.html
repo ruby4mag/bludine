@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div style="font-size: 30px;color: #469f25;float:right" class="card-header">
+                    <i style="padding-left:30px;" routerLink="/users/add" class="fa fa-plus-square "></i>
+                    <div style="float:left;color:black"> Users </div>
+                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                    <div style="float: right;">
+                        <div class="form-group">
+                            <div class="input-group"><input type="text" id="username2" name="username2"
+                                    placeholder="Search" class="form-control">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+		  <div style="overflow-x:auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let user of users.users">
+                                <tr>
+                                    <td>
+                                        {{user.username}}
+                                    </td>
+                                    <td>
+                                        {{user.email}}
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+		  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

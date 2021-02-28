@@ -1,0 +1,130 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div style="font-size: 30px;color: #469f25;float:right" class="card-header">
+                    <i style="padding-left:30px;" routerLink="/restaurants/add" class="fa fa-plus-square "></i>
+                    <div style="float:left;color:black"> Restaurants </div>
+                    <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                    <div style="float: right;">
+                        <div class="form-group">
+                            <div class="input-group"><input type="text" id="username2" name="username2"
+                                    placeholder="Search" class="form-control">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+		  <div style="overflow-x:auto">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Pincode</th>
+                                <th>Mobile Number</th>
+                                <th>Veg</th>
+                                <th>Non Veg</th>
+                                <th>Beverages</th>
+                                <th>Email</th>
+                                <th>Active</th>
+                                <th>Menu</th>
+                                <th>Table Info</th>
+                                <th>QR Code</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <ng-container *ngFor="let restaurant of restaurants.restaurants; let i = index">
+                                <tr>
+                                    <td>
+                                        <div style="color: #1959d5;font-weight: bold;"
+                                            routerLink="/restaurants/{{ restaurant._id  }}"
+                                            [class.active]="i == currentIndex">
+                                            {{restaurant.name}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="formatted-text">{{restaurant.address}}</div>
+                                    </td>
+                                    <td>
+                                        {{restaurant.pincode}}
+                                    </td>
+                                    <td>
+                                        {{restaurant.mobilenumber}}
+                                    </td>
+                                    <td>
+                                        <div *ngIf="restaurant.veg; else elseBlock"><i class="fa fa-check fa-lg"
+                                                style="color:green;"></i>
+                                        </div>
+                                        <ng-template #elseBlock><i class="fa fa-close fa-lg" style="color:red;"></i>
+                                        </ng-template>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="restaurant.nonveg; else elseBlock"><i class="fa fa-check fa-lg"
+                                                style="color:green;"></i>
+                                        </div>
+                                        <ng-template #elseBlock><i class="fa fa-close fa-lg" style="color:red;"></i>
+                                        </ng-template>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="restaurant.beverages; else elseBlock"><i class="fa fa-check fa-lg"
+                                                style="color:green;"></i>
+                                        </div>
+                                        <ng-template #elseBlock><i class="fa fa-close fa-lg" style="color:red;"></i>
+                                        </ng-template>
+                                    </td>
+                                    <td>
+                                        {{restaurant.email}}
+                                    </td>
+                                    <td>
+                                        <div *ngIf="restaurant.active; else elseBlock"><i class="fa fa-check fa-lg"
+                                                style="color:green;"></i>
+                                        </div>
+                                        <ng-template #elseBlock><i class="fa fa-close fa-lg" style="color:red;"></i>
+                                        </ng-template>
+                                    </td>
+                                    <td>
+                                        <div style="color: #1959d5;font-weight: bold;"
+                                            routerLink="/restaurants/{{ restaurant._id  }}/menu"
+                                            [class.active]="i == currentIndex">
+                                            <button class="btn btn-info btn-sm">
+                                                Menu
+                                            </button>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div style="color: #1959d5;font-weight: bold;"
+                                            routerLink="/restaurants/{{ restaurant._id  }}/table"
+                                            [class.active]="i == currentIndex">
+                                            <button class="btn btn-info btn-sm">
+                                                TableInfo
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div style="color: #1959d5;font-weight: bold;"
+                                            routerLink="/restaurants/{{ restaurant._id  }}/qrcode"
+                                            [class.active]="i == currentIndex">
+                                            <button class="btn btn-info btn-sm">
+                                                QRCode
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-container>
+
+                        </tbody>
+                    </table>
+		  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div style="display: flex;flex-wrap: wrap;"></div>
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header" style="text-align:center">
+            <strong>Table QR Code</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Restaurant Name</strong>
+                    <div>{{currentRestaurant.name}}</div>
+                </div>
+                <div class="col-md-6">
+                    <strong>Restaurant Address</strong>
+                    <div class="formatted-text">{{currentRestaurant.address}}</div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Table QR Code Details</strong>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>S No.</th>
+                                                <th>Name</th>
+                                                <th>QR Code</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <ng-container
+                                                *ngFor="let table of currentRestaurant.tablemetadata.table.items; let i = index">
+                                                <tr>
+                                                    <td style="vertical-align: middle;">{{i + 1}} </td>
+                                                    <td style="vertical-align: middle;">{{table.name}}</td>
+                                                    <td style="vertical-align: middle;">
+                                                        <ngx-qrcode [elementType]="elementType"
+                                                            [errorCorrectionLevel]="correctionLevel"
+                                                            [value]="table.name" cssClass="bshadow"></ngx-qrcode>
+                                                    </td>
+                                                </tr>
+                                            </ng-container>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
