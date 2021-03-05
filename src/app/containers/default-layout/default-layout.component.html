@@ -9,10 +9,18 @@
       <a class="nav-link" href="/#/restaurants">Restaurants</a>
     </li>
     <li class="nav-item px-3">
-      <a class="nav-link" href="/#/users/list">Users</a>
-    </li>
-    <li class="nav-item px-3">
       <a class="nav-link" href="/#/dashboard">Reports</a>
+    </li>
+    <li>
+      <div class="btn-group" dropdown>
+        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+          Users<span class="caret"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem"><a class="dropdown-item" href="/#/users/list">Admin</a></li>
+          <li role="menuitem"><a class="dropdown-item" href="/#/restaurantusers/list">Restaurant</a></li>
+        </ul>
+      </div>
     </li>
   </ul>
   <ul class="nav navbar-nav ml-auto">

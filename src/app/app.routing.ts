@@ -24,7 +24,13 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
+import { RestaurantLoginComponent } from './views/restaurantlogin/restaurantlogin.component';
+
 import { UsersListComponent } from './users/users-list/users-list.component';
+import { RestaurantUserRegisterComponent } from './restaurantusers/restaurantuserregister/restaurantuserregister.component';
+import { RestaurantUsersListComponent } from './restaurantusers/restaurantusers-list/restaurantusers-list.component';
+import { RestaurantManagerComponent } from './manage/restaurant-manager/restaurant-manager.component';
+import { GuestScanComponent } from './guest/scan/guest-scan.component'
 
 export const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
@@ -54,6 +60,13 @@ export const routes: Routes = [
   {
     path: 'admin/login',
     component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
+  {
+    path: 'restaurant/login',
+    component: RestaurantLoginComponent,
     data: {
       title: 'Login Page'
     }
@@ -127,7 +140,19 @@ export const routes: Routes = [
       },
       {
         path: 'users/add', component: RegisterComponent,
-      }
+      },
+      {
+        path: 'restaurantusers/add', component: RestaurantUserRegisterComponent,
+      },
+      {
+        path: 'restaurantusers/list', component: RestaurantUsersListComponent,
+      },
+      {
+        path: 'manager/manager/:id', component: RestaurantManagerComponent,
+      },
+      {
+        path: 'scan/:restaurantid/:tableid', component: GuestScanComponent,
+      },
 
     ]
   },

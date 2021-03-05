@@ -9,7 +9,7 @@
           <div class="card-group">
             <div class="card p-4">
               <div class="card-body">
-                <div [routerLink]="['/restaurant/login']" class="col-12 col-sm-6 col-md mb-3 mb-xl-0 text-center"><button type="button" class="btn btn-primary">&nbsp;Restaurant Login</button></div>
+                <div [routerLink]="['/admin/login']" class="col-12 col-sm-6 col-md mb-3 mb-xl-0 text-center"><button type="button" class="btn btn-primary">&nbsp;Admin Login</button></div>
                 <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
                   <h1>Login</h1>
                   <p class="text-muted">Sign In to your account</p>
@@ -49,7 +49,8 @@
                   <h2>BluDine</h2>
                   <i class="cis-fastfood"></i>
                   <p> Admin Control</p>
-                  <div [routerLink]="['/restaurant/login']" class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center"><button type="button" class="btn btn-primary"><i class="fa fa-lightbulb-o"></i>&nbsp;Restaurant Login</button></div>
+                  <div [routerLink]="['/admin/login']" class="col-6 col-sm-4 col-md mb-3 mb-xl-0 text-center"><button type="button" class="btn btn-primary"><i class="fa fa-lightbulb-o"></i>&nbsp;Admin Login</button></div>
+
                 </div>
               </div>
             </div>

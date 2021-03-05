@@ -1,0 +1,93 @@
+
+<div *ngIf="showPinForm" >
+    <form (ngSubmit)="submitPin()" novalidate="" action="" method="post" class="ng-untouched ng-pristine ng-valid">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" id="username" name="username" placeholder="PIN" [(ngModel)]="pin" class="form-control">
+            </div>
+        </div>
+
+        <div style="text-align: center;" class="form-group form-actions">
+            <button type="submit" class="btn btn-sm btn-success">Submit PIN</button>
+        </div>
+    </form>
+</div>
+
+
+    
+{{content}}
+<div *ngIf="showMenu">
+    <div class="card text-white bg-info">
+        <div class="card-body pb-0">
+            <div class="text-value">
+                {{restaurantname}}
+            </div>
+            <div>
+                {{this.route.snapshot.params.tableid}}
+            </div>
+        </div>
+    </div>
+    <div *ngIf="menu.veg">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header"><i class="fa fa-align-justify"></i>
+                    Veg Menu
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let vegitem of menu.veg.items; let i = index">
+                                <tr>
+                                    <td>{{vegitem['name']}}</td>
+                                    <td>{{vegitem['price']}}</td>
+                                    <td><span class="badge badge-success">Add</span></td>
+                                </tr>   
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="menu.veg">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header"><i class="fa fa-align-justify"></i>
+                    Non Menu
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let nonvegitem of menu.nonveg.items; let i = index">
+                                <tr>
+                                    <td>{{nonvegitem['name']}}</td>
+                                    <td>{{nonvegitem['price']}}</td>
+                                    <td><span class="badge badge-success">Add</span></td>
+                                </tr>   
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+

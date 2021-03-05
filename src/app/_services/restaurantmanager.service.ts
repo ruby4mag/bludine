@@ -4,12 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 //const baseUrl = 'http://192.168.1.7:8080/restaurants';
-const baseUrl = 'http://103.154.233.182:8080/restaurants';
+const baseUrl = 'http://103.154.233.182:8080/manager';
 @Injectable({
   providedIn: 'root'
 })
 
-export class RestaurantService {
+export class RestaurantManagerService {
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +23,10 @@ export class RestaurantService {
 
   create(data): Observable<any> {
     return this.http.post(baseUrl, data);
+  }
+
+  getRestaurantmanage(id: string): Observable<any> {
+    return this.http.get(`${baseUrl}/manager/${id}`);
   }
 
   update(id: string, data): Observable<any> {
@@ -51,6 +55,10 @@ export class RestaurantService {
 
   findRestuarantUsers(): Observable<any>{
     return this.http.get(`${baseUrl}/restuarantusers-list`);
+  }
+
+  assignTable(id: string , data): Observable<any>{
+    return this.http.post(`${baseUrl}/assigntable`, data);
   }
 }
 

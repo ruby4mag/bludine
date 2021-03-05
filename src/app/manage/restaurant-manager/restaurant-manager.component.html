@@ -1,0 +1,92 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div style="font-size: 30px;color: #469f25;float:right" class="card-header">
+                    <div style="float:left;color:black"> {{currentRestaurant.name}} </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <ng-container *ngFor="let table of currentRestaurant.tablemetadata.table.items; let i = index">
+                                <div class="col-12 col-lg-3 ">
+                                    <div class="card">
+                                        <div (click)="onClick(table.name,template,currentRestaurant)" class="card-body p-0 clearfix">
+                                            <i [ngClass]="(currentRestaurant.tableinfo.hasOwnProperty(table.name) && currentRestaurant.tableinfo[table.name]['assigned'] == true )?'bg-danger fa-close':'bg-success fa-check'" class="fa p-4 font-2xl mr-3 float-left" style="font-size:1.9rem !important;"></i>
+                                            <div class="h5 text-warning mb-0 pt-3"><span class="badge badge-pill badge-info">{{table.capacity}}</span> 
+                                                <div *ngIf="currentRestaurant.tableinfo.hasOwnProperty(table.name) && currentRestaurant.tableinfo[table.name]['assigned'] == true" style="float: right;padding-right: 10px;" > 
+                                                    PIN : {{currentRestaurant.tableinfo[table.name]['pin']}}
+                                                </div>
+                                            </div>
+                                            <div class="text-muted text-uppercase font-weight-bold font-xs">{{table.name}}</div>
+                                            <div *ngIf="currentRestaurant.tableinfo.hasOwnProperty(table.name) && currentRestaurant.tableinfo[table.name]['assigned'] == true" >
+                                                <div class="text-muted text-uppercase font-weight-bold font-xs">{{currentRestaurant.tableinfo[table.name]['customer']['customername']}} - {{currentRestaurant.tableinfo[table.name]['customer']['customermobile']}} </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </ng-container>
+                    </div>  
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">{{buttonText}} Table</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <br>
+        Table : {{temp}}
+        <br>
+
+
+        <div *ngIf="showCustomerForm" >
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        Customer Details 
+                    </div>
+                    <div class="card-body">
+                        <form (ngSubmit)="onAssign(buttonText,temp)" novalidate="" action="" method="post" class="ng-untouched ng-pristine ng-valid">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input type="text" id="username" name="username" placeholder="Customer Name" [(ngModel)]="customername" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                    </div>
+                                    <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" [(ngModel)]="customeremail" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" id="mobile" name="mobile" placeholder="Mobile Number" autocomplete="current-password" [(ngModel)]="customermobile" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group form-actions">
+                                <button type="submit" class="btn btn-sm btn-success">{{buttonText}}</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+        

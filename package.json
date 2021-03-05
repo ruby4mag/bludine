@@ -57,11 +57,13 @@
     "ng2-charts": "^2.4.2",
     "ngx-bootstrap": "^6.2.0",
     "ngx-perfect-scrollbar": "^10.1.0",
+    "ngx-qrcode": "0.1.0-rc.1",
     "rxjs": "^6.6.3",
     "rxjs-compat": "^6.6.3",
     "simple-line-icons": "^2.5.5",
     "ts-helpers": "^1.1.2",
     "tslib": "^2.0.0",
+    "twilio": "^3.57.0",
     "web-animations-js": "^2.3.2",
     "yadcf-npm": "^0.8.9",
     "zone.js": "~0.10.3"

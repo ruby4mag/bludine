@@ -20,5 +20,8 @@ export class UtilityService {
   getUserCount(): Observable<any> {
     return this.http.get(`${baseUrl}/usercount`);
   }
+  findRestaurantUsers(): Observable<any>{
+    return this.http.get(`${baseUrl}/restaurantusers-list`);
+  }
 }
 

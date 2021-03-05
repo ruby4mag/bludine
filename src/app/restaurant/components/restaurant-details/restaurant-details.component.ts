@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from '../../../_services/restaurant.service';
+import { UtilityService } from '../../../_services/utility.service';
 import { Restaurant } from '../../../models/restaurant.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -24,10 +25,11 @@ export class RestaurantDetailsComponent implements OnInit {
   };
   message = '';
   currentid = '';
+  restaurantusers = []
 
 
 
-  constructor(private restaurantService: RestaurantService, private route: ActivatedRoute,
+  constructor(private utilityService:UtilityService,  private restaurantService: RestaurantService, private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -43,9 +45,23 @@ export class RestaurantDetailsComponent implements OnInit {
         },
         error => {
           console.log(error);
+        });       
+    this.utilityService.findRestaurantUsers()
+      .subscribe(
+        data => {
+          this.restaurantusers = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
         });
+
     this.currentid = id;
+
   }
+
+
+  //findRestuarantUsers
 
   updateRestaurant(): void {
     //var id = this.currentRestaurant.id

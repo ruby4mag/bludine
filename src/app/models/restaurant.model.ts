@@ -13,4 +13,5 @@ export class Restaurant {
   email?: String;
   menu?: {};
   tablemetadata?: {};
+  tableinfo?: {};
 }
